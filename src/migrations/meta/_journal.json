@@ -15,6 +15,34 @@
       "when": 1773472201984,
       "tag": "0001_gray_champions",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1773473932204,
+      "tag": "0002_high_lily_hollister",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1773474347216,
+      "tag": "0003_unusual_harry_osborn",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1773474411363,
+      "tag": "0004_striped_avengers",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1773474593927,
+      "tag": "0005_curved_morbius",
+      "breakpoints": true
     }
   ]
 }
