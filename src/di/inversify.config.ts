@@ -15,9 +15,15 @@ import { JwtServiceImpl } from "@/service/impl/jwt-service.impl";
 
 // Repository interface
 import type { UserRepository } from "@/repository/user-repository.interface";
+import type { BookRepository } from "@/repository/book-repository.interface";
 
 // Repository implemenations
 import { UserRepositoryImpl } from "@/repository/impl/user-repository.impl";
+import { BookRepositoryImpl } from "@/repository/impl/book-repository.impl";
+
+// Books service
+import type { BooksService } from "@/service/books-service.interface";
+import { BooksServiceImpl } from "@/service/impl/books-service.impl";
 
 const container = new Container();
 
@@ -31,5 +37,9 @@ container.bind<NodePgDatabase>(TYPES.Database).toConstantValue(db);
 
 // Repositories
 container.bind<UserRepository>(TYPES.UserRepository).to(UserRepositoryImpl);
+container.bind<BookRepository>(TYPES.BookRepository).to(BookRepositoryImpl);
+
+// Books service
+container.bind<BooksService>(TYPES.BooksService).to(BooksServiceImpl);
 
 export { container };

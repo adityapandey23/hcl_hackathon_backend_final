@@ -26,7 +26,6 @@ export async function authMiddleware(
       userId: payload.sub,
       role: payload.role,
     };
-
     next();
   } catch (error) {
     console.error("An error has occured", error);
