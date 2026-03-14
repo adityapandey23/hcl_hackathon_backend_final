@@ -3,6 +3,7 @@ import {
   text,
   timestamp,
   integer,
+  boolean,
   primaryKey,
   pgEnum,
 } from "drizzle-orm/pg-core";
@@ -47,25 +48,18 @@ export const user = pgTable("user", {
 });
 
 export const authors = pgTable("author", {
-  id: text("id").primaryKey(),
+  ...commonColumns(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
 });
 
 export const books = pgTable("books", {
-  id: text("id").primaryKey(),
-
+  ...commonColumns(),
   title: text("title").notNull(),
-
-  isAvailable: text("is_available"),
-
+  isAvailable: boolean("is_available").default(false),
   description: text("description"),
-
   publishedYear: integer("published_year"),
-
   categoryId: text("category_id").references(() => categories.id),
-
-  createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const bookAuthors = pgTable(
@@ -85,23 +79,20 @@ export const bookAuthors = pgTable(
 );
 
 export const categories = pgTable("categories", {
-  id: text("id").primaryKey(),
-
+  ...commonColumns(),
   name: text("name").notNull(),
 });
 
 export const bookCopies = pgTable("book_copies", {
-  id: text("id").primaryKey(),
-
+  ...commonColumns(),
   bookId: text("book_id")
     .notNull()
     .references(() => books.id),
-
   status: copyStatusEnum("status").default("AVAILABLE"),
 });
 
 export const borrowTransactions = pgTable("borrow_transactions", {
-  id: text("id").primaryKey(),
+  ...commonColumns(),
   userId: text("user_id")
     .notNull()
     .references(() => user.id),

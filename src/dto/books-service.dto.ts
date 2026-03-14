@@ -3,7 +3,7 @@ export type CreateBookDto = {
   description?: string;
   publishedYear?: number;
   categoryId?: string;
-  isAvailable?: string;
+  isAvailable?: boolean;
 };
 
 export type UpdateBookDto = Partial<CreateBookDto>;
