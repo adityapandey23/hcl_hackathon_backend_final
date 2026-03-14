@@ -11,6 +11,7 @@ import type {
 } from "@/dto/auth-service.dto";
 import type { UserRepository } from "@/repository/user-repository.interface";
 import type { JwtPayload } from "@/dto/jwt-service.dto";
+import { Role } from "@/db/schema";
 
 @injectable()
 export class AuthServiceImpl implements AuthService {
@@ -37,6 +38,7 @@ export class AuthServiceImpl implements AuthService {
 
     const payload: JwtPayload = {
       sub: existingUser.id,
+      role: existingUser.role as Role,
     };
 
     const token = await this.jwtService.signToken(payload);
@@ -66,6 +68,7 @@ export class AuthServiceImpl implements AuthService {
 
     const payload: JwtPayload = {
       sub: created.id,
+      role: created.role as Role,
     };
 
     const token = await this.jwtService.signToken(payload);

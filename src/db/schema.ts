@@ -1,5 +1,11 @@
 import { pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
+// Common Enum for all tables
+export enum Role {
+  ADMIN = "admin",
+  USER = "user",
+}
+
 // Common columns for all tables
 const commonColumns = () => ({
   id: text("id").primaryKey(),
@@ -17,4 +23,5 @@ export const user = pgTable("user", {
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
   password: text("password").notNull(),
+  role: text("role").notNull().default(Role.USER),
 });

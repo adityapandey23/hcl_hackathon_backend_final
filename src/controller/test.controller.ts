@@ -20,9 +20,10 @@ export class TestController implements interfaces.Controller {
   @httpPost("/hello", authMiddleware, validateBody(helloSchema))
   private async hello(@request() req: Request, @response() res: Response) {
     const { name } = req.body as z.infer<typeof helloSchema>;
+    const { role } = req.user!;
 
     res.json({
-      message: `hello world ${name}`,
+      message: `hello world ${name} with role ${role}`,
     });
   }
 }

@@ -24,6 +24,7 @@ export async function authMiddleware(
 
     req.user = {
       userId: payload.sub,
+      role: payload.role,
     };
 
     next();
