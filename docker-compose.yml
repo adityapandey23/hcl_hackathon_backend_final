@@ -1,0 +1,19 @@
+services:
+  # TODO: Uncomment this when the backend is ready (make sure to replace the localhost in .env file)
+  # backend:
+  #   build: .
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - db
+  #   env_file:
+  #     - .env.example
+  #   restart: unless-stopped
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
